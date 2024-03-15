@@ -1,0 +1,62 @@
+	
+<!--	<form method="post" action"@{/form}" th:object="${formModel}">-->
+<!--		<div class-"mb-3">-->
+<!--			<label for="name" class="form-label">Name</label>-->
+<!--			<input type="text" class="form-control"-->
+<!--				name="name" th:field="*{userName}" />-->
+<!--		</div>-->
+<!--	</form>-->
+	
+<!--	<form method="post" action"@{/form}" th:object="${formModel}">-->
+<!--		<div class-"mb-3">-->
+<!--			<label for="name" class="form-label">残高</label>-->
+<!--			<input type="text" class="form-control"-->
+<!--				name="name" th:field="*{balance}" />-->
+<!--		</div>-->
+	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body class="container">
+	<h1 class="display-4 mb-4" th:text="${title}"></h1>
+	<p th:text="${msg}"></p>
+
+<form class="form py-4 needs-validation h-adr" method="post" th:action="@{/form}" th:object="${bankaccount}">
+	<div class="row mt-3">
+		<label for="userName" class="col-4 col-form-label text-end">名前</label>
+		<div class="col-4">
+			<input type="text" class="form-control"th:field="*{userName}"/>
+		</div>
+	</div>
+	<div class="row mt-3">
+		<label for="password" class="col-4 col-form-label text-end">パスワード</label>
+		<div class="col-4">
+			<input type="password" class="form-control" th:field="*{password}"/>
+		</div>
+	</div>
+	<div class="row mt-3">
+	<label for="balance" class="col-4 col-form-label text-end">初期残高</label>
+		<div class="col-4">
+			<input type="number" class="form-control" th:field="*{balance}" />
+		</div>
+	</div>
+	<input type="submit" class="btn btn-primary"value="Create"/>
+</form>
+
+	<table class="table">
+		<thead>
+			<tr><th>ID</th><th>Name</th><th>残高</th></tr>
+		</thead>
+		<tbody>
+			<tr class="align-middle" th:each="item : ${formModel}"th:object="${formModel}">
+				<td th:text="${item.accountId}"></td>
+				<td th:text="${item.userName}"></td>
+				<td th:text="${item.balance}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
